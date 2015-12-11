@@ -1,6 +1,6 @@
 # Em-helpers
 
-This README outlines the details of collaborating on this Ember addon.
+As set of handlebar helpers for Ember.
 
 ## Installation
 
@@ -22,5 +22,3 @@ This README outlines the details of collaborating on this Ember addon.
 ## Building
 
 * `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
