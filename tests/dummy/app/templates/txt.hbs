@@ -1,0 +1,64 @@
+<h4>1. Plain text</h4>
+
+Direct String: {{txt "Test text"}}
+<br/>
+Variable: {{txt variable}}
+<br/>
+Bounded Variable: {{txt boundedVariable}}
+<br/>
+Null Variable: {{txt nullVariable}}
+<br/>
+No Variable: {{txt}}
+
+<h4>2. Date</h4>
+
+Value as date object: {{txt dateObject type="date"}}
+<br/>
+With timezone (America/Los_Angeles): {{txt dateObject type="date" timeZone="America/Los_Angeles"}}
+<br/>
+With format=DD/MM/YY: {{txt dateObject type="date" format="DD/MM/YY"}}
+<br/>
+Direct value as number: {{txt 1399919400000 type="date"}}
+<br/>
+Value as number variable: {{txt dateNumVariable type="date"}}
+<br/>
+Bounded value: {{txt boundedVariable type="date" format="DD/MM/YY HH:MM:SS"}}
+
+<h4>3. Duration</h4>
+
+Value=3333: {{txt 3333 type="duration"}}
+<br/>
+Value=3333 with valueUnit=seconds: {{txt 3333 type="duration" valueUnit="seconds"}}
+<br/>
+Bounded: {{txt boundedVariable type="duration" valueUnit="seconds"}}
+<br/>
+
+<h4>4. Number</h4>
+
+Number 1: {{txt 10 type="number"}}
+<br/>
+Number 2: {{txt 10000 type="number"}}
+<br/>
+Number 3: {{txt 10000000 type="number"}}
+<br/>
+Number 4: {{txt 10000000000 type="number"}}
+<br/>
+Biunded Number: {{txt boundedVariable type="number"}}
+<br/>
+
+<h4>5. Memory</h4>
+
+In Bytes: {{txt 10 type="memory"}}
+<br/>
+In K Bytes: {{txt 10000 type="memory"}}
+<br/>
+In M Bytes: {{txt 10000000 type="memory"}}
+<br/>
+In G Bytes: {{txt 10000000000 type="memory"}}
+<br/>
+In T Bytes: {{txt 10000000000000 type="memory"}}
+<br/>
+In P Bytes: {{txt 10000000000000000 type="memory"}}
+<br/>
+Bounded Bytes: {{txt boundedVariable type="memory"}}
+<br/>

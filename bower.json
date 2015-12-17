@@ -1,6 +1,8 @@
 {
   "name": "em-helpers",
   "dependencies": {
+    "moment": "2.8.0",
+    "moment-timezone": "0.4.1",
     "ember": "2.2.0",
     "ember-cli-shims": "0.0.6",
     "ember-cli-test-loader": "0.2.1",
@@ -10,7 +12,8 @@
     "ember-qunit-notifications": "0.1.0",
     "jquery": "^1.11.3",
     "loader.js": "3.3.0",
-    "qunit": "~1.19.0"
+    "qunit": "~1.19.0",
+    "numeral": "~1.5.3"
   },
   "resolutions": {
     "ember": "2.1.0"
