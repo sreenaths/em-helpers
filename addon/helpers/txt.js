@@ -11,7 +11,7 @@ export function txt(value, hash) {
   }
 
   try {
-    if(value && !formatter && dataType) {
+    if(value !== undefined && !formatter && dataType) {
       formatter = formatters[dataType];
     }
 

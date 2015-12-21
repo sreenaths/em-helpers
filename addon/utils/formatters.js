@@ -20,7 +20,7 @@ function durationFormatter(arr, value, unit) {
 
 export default Ember.Controller.create({
   date: function (value, options) {
-    var date = moment.tz(value, options.valueFormat, options.timeZone || DEFAULT_DATE_TIMEZONE);
+    var date = moment.tz(value, options.valueFormat, options.valueTimeZone || DEFAULT_DATE_TIMEZONE);
 
     date = options.timeZone ? date.tz(options.timeZone) : date.local();
 
