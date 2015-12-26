@@ -8,7 +8,7 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
 
 ## Helpers
 
-### txt - _for formatting text_
+### 1. txt - _for formatting text_
 
 ```hbs
 {{txt <value> [type={string} ..extra properties depended on type.. formatter={Function} ]}}
@@ -73,7 +73,7 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
 {{txt 10000000000 type="memory"}} // 9 GB
 ```
 
-### em-progress - _A simple progressbar_
+### 2. em-progress - _A simple progressbar_
 
 ```hbs
 {{em-progress value=0 striped=true}}
