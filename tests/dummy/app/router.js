@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('txt');
+  this.route('em-progress');
 });
 
 export default Router;
