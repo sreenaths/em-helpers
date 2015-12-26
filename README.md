@@ -81,12 +81,15 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
 
 #### value
   - Current value to be displayed
+
 #### valueMin
   - Defaults to 0
   - Progress would be calculated from this value
+
 #### valueMax
   - Defaults to 1
   - Progress would be calculated to this value
+
 #### striped
   - Adds candy stripes to the progress-bar, and animates the same when valueMin < value < valueMax
 
