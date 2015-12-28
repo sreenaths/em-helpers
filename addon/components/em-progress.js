@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   }),
 
   animated: Ember.computed("widthPercent", "striped", function () {
-    return this.get('striped') && this.get('widthPercent') < 100;
+    return this.get('striped') && this.get('widthPercent') > 0 && this.get('widthPercent') < 100;
   }),
 
   renderProgress: Ember.observer("progressBar", "progressText", "widthPercent", function () {

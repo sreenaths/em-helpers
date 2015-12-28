@@ -6,6 +6,10 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
 
 `npm install --save em-table`
 
+## Running UTs & integration tests
+
+`ember test`
+
 ## Helpers
 
 ### 1. txt - _for formatting text_
