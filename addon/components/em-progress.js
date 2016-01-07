@@ -12,6 +12,7 @@ export default Ember.Component.extend({
   classNameBindings: ["animated", "striped"],
 
   striped: false,
+  style: null,
 
   progressBar: null,
   progressText: null,
@@ -36,6 +37,23 @@ export default Ember.Component.extend({
 
   animated: Ember.computed("widthPercent", "striped", function () {
     return this.get('striped') && this.get('widthPercent') > 0 && this.get('widthPercent') < 100;
+  }),
+
+  progressBarClasses: Ember.computed("style", "striped", "animated", function () {
+    var classes = [],
+        style = this.get("style");
+
+    if(style) {
+      classes.push(`progress-bar-${style}`);
+    }
+    if(this.get("striped")) {
+      classes.push("progress-bar-striped");
+    }
+    if(this.get("animated")) {
+      classes.push("active");
+    }
+
+    return classes.join(" ");
   }),
 
   renderProgress: Ember.observer("progressBar", "progressText", "widthPercent", function () {

@@ -1,6 +1,7 @@
 # Em-helpers
 
 As set of handlebar helpers for Ember 1.13.11 and higher.
+Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
 
 ## Installation
 
@@ -9,6 +10,11 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
 ## Running UTs & integration tests
 
 `ember test`
+
+## Running demo app
+
+* `ember server`
+* Visit your app at http://localhost:4200.
 
 ## Helpers
 
@@ -95,9 +101,10 @@ As set of handlebar helpers for Ember 1.13.11 and higher.
   - Progress would be calculated to this value
 
 #### striped
-  - Adds candy stripes to the progress-bar, and animates the same when valueMin < value < valueMax
+  - Adds candy stripes to the progress-bar
+  - Also the bar is **animates** when valueMin < value < valueMax
 
-## Running demo app
-
-* `ember server`
-* Visit your app at http://localhost:4200.
+#### style
+  - Use this param to color the progressbar
+  - All styles provided by bootstrap are supported
+  - Available values are success, info, warning & danger

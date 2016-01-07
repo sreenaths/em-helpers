@@ -39,6 +39,7 @@
     "ember-resolver": "^2.0.3"
   },
   "keywords": [
+    "bootstrap",
     "ember-addon",
     "component",
     "helpers",
