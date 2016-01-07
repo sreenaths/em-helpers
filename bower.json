@@ -14,7 +14,8 @@
     "loader.js": "3.3.0",
     "qunit": "~1.19.0",
     "numeral": "~1.5.3",
-    "snippet-ss": "*"
+    "snippet-ss": "*",
+    "bootstrap": "~3.3.5"
   },
   "resolutions": {
     "ember": "2.1.0"
