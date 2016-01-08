@@ -83,7 +83,7 @@ Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
 {{txt 10000000000 type="memory"}} // 9 GB
 ```
 
-### 2. em-progress - _A simple progressbar_
+### 2. em-progress - _A simple progress bar_
 
 ```hbs
 {{em-progress value=0 striped=true}}
@@ -105,6 +105,31 @@ Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
   - Also the bar is **animates** when valueMin < value < valueMax
 
 #### style
-  - Use this param to color the progressbar
+  - Use this param to color the progress bar
   - All styles provided by bootstrap are supported
   - Available values are success, info, warning & danger
+
+### 2. em-breadcrumbs
+
+```hbs
+{{em-progress items=[array of item objects]}}
+```
+
+Each item object can have the following properties.
+
+#### text
+  - The link display text
+
+#### routeName
+  - When specified the item will be a link-to the respective route
+
+#### model
+  - If you want to route to a specific model/id as dynamic segment
+  - To have multiple dynamic segments pass an object of values, and use a serialize hook
+
+#### href
+  - This creates an anchor tag instead of ember's link-to
+  - Useful for linking to external resources
+
+#### classNames
+  - Must be an array of css class names
