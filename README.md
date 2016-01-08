@@ -5,7 +5,7 @@ Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
 
 ## Installation
 
-`npm install --save em-table`
+`npm install --save em-helpers`
 
 ## Running UTs & integration tests
 
