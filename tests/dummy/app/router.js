@@ -8,6 +8,8 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('txt', {path: "/"});
   this.route('em-progress');
+  this.route('em-breadcrumbs');
+  this.route('param-test', { path: "param-test/:id" });
 });
 
 export default Router;
