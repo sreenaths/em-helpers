@@ -15,7 +15,6 @@ export default Ember.Component.extend({
   style: null,
 
   progressBar: null,
-  progressText: null,
 
   widthPercent: Ember.computed("value", "valueMin", "valueMax", function () {
     var value = this.get("value"),
@@ -33,6 +32,10 @@ export default Ember.Component.extend({
     valueMax -= valueMin;
 
     return (value / valueMax) * 100;
+  }),
+
+  progressText: Ember.computed("widthPercent", function () {
+    return parseInt(this.get("widthPercent")) + "%";
   }),
 
   animated: Ember.computed("widthPercent", "striped", function () {
@@ -56,24 +59,20 @@ export default Ember.Component.extend({
     return classes.join(" ");
   }),
 
-  renderProgress: Ember.observer("progressBar", "progressText", "widthPercent", function () {
+  renderProgress: Ember.observer("progressBar", "widthPercent", function () {
     var widthPercent = this.get('widthPercent');
-
     this.get("progressBar").width(widthPercent + "%");
-    this.get("progressText").text(parseInt(widthPercent) + "%");
   }),
 
   didInsertElement: function () {
     this.setProperties({
-      progressBar: this.$(".progress-bar"),
-      progressText: this.$(".progress-text")
+      progressBar: this.$(".progress-bar")
     });
   },
 
   willDestroy: function () {
     this.setProperties({
       progressBar: null,
-      progressText: null
     });
   }
 });
