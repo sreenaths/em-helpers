@@ -8,6 +8,27 @@ const DEFAULT_DATE_TIMEZONE = "UTC",
       DEFAULT_NUM_FORMAT = '0,0',
       DEFAULT_MEM_FORMAT = '0 b';
 
+const DURATION_FORMATS = {
+  long: {
+    year: "year",
+    month: "month",
+    day: "day",
+    hour: "hour",
+    minute: "minute",
+    second: "second",
+    millisecond: "millisecond"
+  },
+  short: {
+    year: "yr",
+    month: "mo",
+    day: "day",
+    hour: "hr",
+    minute: "min",
+    second: "sec",
+    millisecond: "msec"
+  }
+};
+
 function durationFormatter(arr, value, unit) {
   if(value > 0) {
     if(value > 1) {
@@ -28,14 +49,16 @@ export default Ember.Controller.create({
   },
   duration: function (value, options) {
     var duration = moment.duration(value, options.valueUnit),
+        format = DURATION_FORMATS[options.format || "short"],
         ret = [];
 
-    durationFormatter(ret, duration.years(), 'year');
-    durationFormatter(ret, duration.months(), 'month');
-    durationFormatter(ret, duration.days(), 'day');
-    durationFormatter(ret, duration.hours(), 'hour');
-    durationFormatter(ret, duration.minutes(), 'minute');
-    durationFormatter(ret, duration.seconds(), 'second');
+    durationFormatter(ret, duration.years(), format.year);
+    durationFormatter(ret, duration.months(), format.month);
+    durationFormatter(ret, duration.days(), format.day);
+    durationFormatter(ret, duration.hours(), format.hour);
+    durationFormatter(ret, duration.minutes(), format.minute);
+    durationFormatter(ret, duration.seconds(), format.second);
+    durationFormatter(ret, duration.milliseconds(), format.millisecond);
 
     return ret.join(" ");
   },

@@ -28,14 +28,30 @@ test('date: Parsing, timezone conversion(UTC to local) and formatting', function
 });
 
 test('duration', function(assert) {
-  assert.equal(fmts.duration(6000, {}), "6 seconds");
-  assert.equal(fmts.duration(66000, {}), "1 minute 6 seconds");
-  assert.equal(fmts.duration(666000, {}), "11 minutes 6 seconds");
-  assert.equal(fmts.duration(6666000, {}), "1 hour 51 minutes 6 seconds");
-  assert.equal(fmts.duration(66666000, {}), "18 hours 31 minutes 6 seconds");
-  assert.equal(fmts.duration(666666000, {}), "7 days 17 hours 11 minutes 6 seconds");
-  assert.equal(fmts.duration(6666666000, {}), "2 months 17 days 3 hours 51 minutes 6 seconds");
-  assert.equal(fmts.duration(66666666000, {}), "2 years 1 month 11 days 14 hours 31 minutes 6 seconds");
+  var options = {
+    format: "long"
+  };
+  assert.equal(fmts.duration(1, options), "1 millisecond");
+  assert.equal(fmts.duration(60, options), "60 milliseconds");
+  assert.equal(fmts.duration(6000, options), "6 seconds");
+  assert.equal(fmts.duration(66000, options), "1 minute 6 seconds");
+  assert.equal(fmts.duration(666000, options), "11 minutes 6 seconds");
+  assert.equal(fmts.duration(6666000, options), "1 hour 51 minutes 6 seconds");
+  assert.equal(fmts.duration(66666000, options), "18 hours 31 minutes 6 seconds");
+  assert.equal(fmts.duration(666666000, options), "7 days 17 hours 11 minutes 6 seconds");
+  assert.equal(fmts.duration(6666666000, options), "2 months 17 days 3 hours 51 minutes 6 seconds");
+  assert.equal(fmts.duration(66666666000, options), "2 years 1 month 11 days 14 hours 31 minutes 6 seconds");
+
+  options = {}; // By default format = short
+  assert.equal(fmts.duration(60, options), "60 msecs");
+  assert.equal(fmts.duration(6000, options), "6 secs");
+  assert.equal(fmts.duration(66000, options), "1 min 6 secs");
+  assert.equal(fmts.duration(666000, options), "11 mins 6 secs");
+  assert.equal(fmts.duration(6666000, options), "1 hr 51 mins 6 secs");
+  assert.equal(fmts.duration(66666000, options), "18 hrs 31 mins 6 secs");
+  assert.equal(fmts.duration(666666000, options), "7 days 17 hrs 11 mins 6 secs");
+  assert.equal(fmts.duration(6666666000, options), "2 mos 17 days 3 hrs 51 mins 6 secs");
+  assert.equal(fmts.duration(66666666000, options), "2 yrs 1 mo 11 days 14 hrs 31 mins 6 secs");
 });
 
 test('number', function(assert) {
