@@ -22,5 +22,5 @@ test('txt: String - error', function(assert) {
   var obj = {};
 
   obj.toString = null;
-  assert.equal(txt([obj], {}), '<span class="txt-message"> Invalid data! </span>');
+  assert.equal(txt([obj], {}), '<span class="txt-message"> Invalid Data! </span>');
 });

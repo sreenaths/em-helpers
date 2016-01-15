@@ -35,7 +35,11 @@ export default Ember.Component.extend({
   }),
 
   progressText: Ember.computed("widthPercent", function () {
-    return parseInt(this.get("widthPercent")) + "%";
+    var percent = parseInt(this.get("widthPercent"));
+    if(isNaN(percent)) {
+      percent = 0;
+    }
+    return percent + "%";
   }),
 
   animated: Ember.computed("widthPercent", "striped", function () {

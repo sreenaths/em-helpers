@@ -27,7 +27,7 @@ export function txt(value, hash) {
     }
   }
   catch(error) {
-    message = "Invalid data!";
+    message = "Invalid Data!";
     Ember.Logger.error(error);
   }
 
