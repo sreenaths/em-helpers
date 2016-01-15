@@ -39,18 +39,36 @@ function durationFormatter(arr, value, unit) {
   }
 }
 
+function validateNumber(value, message) {
+  value = parseFloat(value);
+
+  if(isNaN(value)) {
+    throw new Error(message || "Invalid number!");
+  }
+
+  return value;
+}
+
 export default Ember.Controller.create({
   date: function (value, options) {
     var date = moment.tz(value, options.valueFormat, options.valueTimeZone || DEFAULT_DATE_TIMEZONE);
 
     date = options.timeZone ? date.tz(options.timeZone) : date.local();
+    date = date.format(options.format || DEFAULT_DATE_FORMAT);
 
-    return date.format(options.format || DEFAULT_DATE_FORMAT);
+    if(date === "Invalid date") {
+      throw new Error(date);
+    }
+
+    return date;
   },
   duration: function (value, options) {
-    var duration = moment.duration(value, options.valueUnit),
-        format = DURATION_FORMATS[options.format || "short"],
+    var format = DURATION_FORMATS[options.format || "short"],
+        duration,
         ret = [];
+
+    value = validateNumber(value, "Invalid duration");
+    duration = moment.duration(value, options.valueUnit);
 
     durationFormatter(ret, duration.years(), format.year);
     durationFormatter(ret, duration.months(), format.month);
@@ -63,9 +81,11 @@ export default Ember.Controller.create({
     return ret.join(" ");
   },
   number: function (value, options) {
+    value = validateNumber(value);
     return numeral(value).format(options.format || DEFAULT_NUM_FORMAT);
   },
   memory: function (value) {
+    value = validateNumber(value, "Invalid memory");
     return numeral(value).format(DEFAULT_MEM_FORMAT);
   }
 });

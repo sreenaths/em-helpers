@@ -25,6 +25,8 @@ Direct value as number: {{txt 1399919400000 type="date"}}
 Value as number variable: {{txt dateNumVariable type="date"}}
 <br/>
 Bounded value: {{txt boundedVariable type="date" format="DD/MM/YY HH:MM:SS"}}
+<br/>
+Invalid value: {{txt "{}" type="date"}}
 
 <h4>3. Duration</h4>
 
@@ -33,6 +35,8 @@ Value=3333: {{txt 3333 type="duration"}}
 Value=3333 with valueUnit=seconds: {{txt 3333 type="duration" valueUnit="seconds"}}
 <br/>
 Bounded: {{txt boundedVariable type="duration" valueUnit="seconds"}}
+<br/>
+Invalid value: {{txt "{}" type="duration"}}
 <br/>
 
 <h4>4. Number</h4>
@@ -45,7 +49,9 @@ Number 3: {{txt 10000000 type="number"}}
 <br/>
 Number 4: {{txt 10000000000 type="number"}}
 <br/>
-Biunded Number: {{txt boundedVariable type="number"}}
+Bounded Number: {{txt boundedVariable type="number"}}
+<br/>
+Invalid Number: {{txt "{}" type="number"}}
 <br/>
 
 <h4>5. Memory</h4>
@@ -63,4 +69,6 @@ In T Bytes: {{txt 10000000000000 type="memory"}}
 In P Bytes: {{txt 10000000000000000 type="memory"}}
 <br/>
 Bounded Bytes: {{txt boundedVariable type="memory"}}
+<br/>
+Invalid Bytes: {{txt "{}" type="memory"}}
 <br/>
