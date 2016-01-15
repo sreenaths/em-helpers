@@ -15,7 +15,7 @@ export function txt(value, hash) {
       formatter = formatters[dataType];
     }
 
-    if(formatter) {
+    if(formatter && value) {
       value = formatter(value, hash);
     }
 
