@@ -4,7 +4,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 const DEFAULT_DATE_TIMEZONE = "UTC",
-      DEFAULT_DATE_FORMAT = "DD MMM YYYY HH:mm",
+      DEFAULT_DATE_FORMAT = "DD MMM YYYY HH:mm:ss",
       DEFAULT_NUM_FORMAT = '0,0',
       DEFAULT_MEM_FORMAT = '0 b';
 
@@ -76,7 +76,7 @@ export default Ember.Controller.create({
     durationFormatter(ret, duration.hours(), format.hour);
     durationFormatter(ret, duration.minutes(), format.minute);
     durationFormatter(ret, duration.seconds(), format.second);
-    durationFormatter(ret, duration.milliseconds(), format.millisecond);
+    durationFormatter(ret, Math.round(duration.milliseconds()), format.millisecond);
 
     return ret.join(" ");
   },

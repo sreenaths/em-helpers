@@ -1,6 +1,6 @@
 {
   "name": "em-helpers",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "As set of handlebar helpers for Ember.",
   "directories": {
     "doc": "doc",
@@ -48,8 +48,9 @@
     "progress-bar"
   ],
   "dependencies": {
+    "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-less": "^1.4.0",
-    "ember-cli-htmlbars": "^1.0.1"
+    "phantomjs": "^1.9.19"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

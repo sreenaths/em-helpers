@@ -14,8 +14,8 @@ test('Formatter functions created', function(assert) {
   assert.ok(fmts.memory);
 });
 
-test('date: Default formatting - DD MMM YYYY HH:mm', function(assert) {
-  assert.equal(fmts.date(1451147679624, {}), "26 Dec 2015 22:04");
+test('date: Default formatting - DD MMM YYYY HH:mm:ss', function(assert) {
+  assert.equal(fmts.date(1451147679624, {}), "26 Dec 2015 22:04:39");
 });
 
 test('date: Parsing, timezone conversion(UTC to local) and formatting', function(assert) {
@@ -52,6 +52,9 @@ test('duration', function(assert) {
   assert.equal(fmts.duration(666666000, options), "7 days 17 hrs 11 mins 6 secs");
   assert.equal(fmts.duration(6666666000, options), "2 mos 17 days 3 hrs 51 mins 6 secs");
   assert.equal(fmts.duration(66666666000, options), "2 yrs 1 mo 11 days 14 hrs 31 mins 6 secs");
+
+  assert.equal(fmts.duration(60.4, options), "60 msecs");
+  assert.equal(fmts.duration(60.6, options), "61 msecs");
 });
 
 test('number', function(assert) {
