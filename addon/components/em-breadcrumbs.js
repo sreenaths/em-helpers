@@ -20,7 +20,7 @@ export default Ember.Component.extend({
       let lastIndex = items.length - 1;
       items = items.map(function (item, index) {
         var itemDef = {
-          text: item.text,
+          text: item.text || "",
           classNames: item.classNames || [],
         };
 
@@ -33,6 +33,12 @@ export default Ember.Component.extend({
           itemDef.routeName = item.routeName;
           itemDef.model = item.model;
           itemDef.href = item.href;
+          if(item.queryParams) {
+            itemDef.queryParams = {
+              isQueryParams: true,
+              values: item.queryParams
+            };
+          }
         }
 
         itemDef.classNames = itemDef.classNames.join(" ");
