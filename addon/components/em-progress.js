@@ -69,8 +69,10 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement: function () {
-    this.setProperties({
-      progressBar: this.$(".progress-bar")
+    Ember.run.scheduleOnce('afterRender', this, function() {
+      this.setProperties({
+        progressBar: this.$(".progress-bar")
+      });
     });
   },
 
