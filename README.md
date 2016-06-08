@@ -57,6 +57,12 @@ Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
 ##### type='memory'
 - A short had for `type='number'` & `format='0 b'`
 
+##### type='json'
+- Pretty prints an object in an indented JSON representation. Uses JSON.stringify internally.
+- Supported extra properties
+  - **replacer** - Same as JSON.stringify replacer
+  - **space** - Same as JSON.stringify space. Defaults to 4 spaces
+
 #### formatter:
 - An optional callback function to create custom formatting.
 - Will be called with two values; `value` and property `hash` passed into the helper

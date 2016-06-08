@@ -87,5 +87,8 @@ export default Ember.Controller.create({
   memory: function (value) {
     value = validateNumber(value, "Invalid memory");
     return numeral(value).format(DEFAULT_MEM_FORMAT);
+  },
+  json: function (value, options) {
+    return JSON.stringify(value, options.replacer, options.space || 4);
   }
 });

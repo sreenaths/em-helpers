@@ -69,3 +69,9 @@ test('memory', function(assert) {
   assert.equal(fmts.memory(1024 * 1024 * 1024, {}), "1 GB");
   assert.equal(fmts.memory(1024 * 1024 * 1024 * 1024, {}), "1 TB");
 });
+
+test('json', function(assert) {
+  assert.equal(fmts.json({x: 1}, {}), '{\n    "x": 1\n}');
+  assert.equal(fmts.json({x: 1, y: 2}, {space: 1}), '{\n "x": 1,\n "y": 2\n}');
+  assert.equal(fmts.json({x: 1, y: {z: 3}}, {space: 1}), '{\n "x": 1,\n "y": {\n  "z": 3\n }\n}');
+});
