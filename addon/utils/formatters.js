@@ -89,6 +89,12 @@ export default Ember.Controller.create({
     return numeral(value).format(DEFAULT_MEM_FORMAT);
   },
   json: function (value, options) {
-    return JSON.stringify(value, options.replacer, options.space || 4);
+    if(value && typeof value === "object" && value.constructor === Object) {
+      try {
+        value = JSON.stringify(value, options.replacer, options.space || 4);
+      }
+      catch(e){}
+    }
+    return value;
   }
 });

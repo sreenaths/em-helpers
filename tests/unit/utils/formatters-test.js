@@ -1,6 +1,8 @@
 import fmts from '../../../utils/formatters';
 import { module, test } from 'qunit';
 
+import Ember from 'ember';
+
 import moment from 'moment';
 
 module('Unit | Utility | formatters');
@@ -71,6 +73,15 @@ test('memory', function(assert) {
 });
 
 test('json', function(assert) {
+  var str = "testString",
+      complexObj = Ember.Object.create();
+
+  assert.equal(fmts.json(str, {}), str);
+  assert.equal(fmts.json(complexObj, {}), complexObj);
+
+  assert.equal(fmts.json(null, {}), null);
+  assert.equal(fmts.json(undefined, {}), undefined);
+
   assert.equal(fmts.json({x: 1}, {}), '{\n    "x": 1\n}');
   assert.equal(fmts.json({x: 1, y: 2}, {space: 1}), '{\n "x": 1,\n "y": 2\n}');
   assert.equal(fmts.json({x: 1, y: {z: 3}}, {space: 1}), '{\n "x": 1,\n "y": {\n  "z": 3\n }\n}');
