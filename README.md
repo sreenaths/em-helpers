@@ -88,6 +88,15 @@ Uses [bootstrap](https://www.npmjs.com/package/ember-bootstrap) for styling.
 ```hbs
 {{txt 10000000000 type="memory"}} // 9 GB
 ```
+```hbs
+{{txt obj type="json"}}
+// With obj={x: 1, y:2}
+// Value displayed is
+// {
+//     "x": 1,
+//     "y": 2
+// }
+```
 
 ### 2. em-progress - _A simple progress bar_
 

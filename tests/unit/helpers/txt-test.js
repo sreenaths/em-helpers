@@ -24,3 +24,13 @@ test('txt: String - error', function(assert) {
   obj.toString = null;
   assert.equal(txt([obj], {}), '<span class="txt-message"> Invalid Data! </span>');
 });
+
+test('txt: json', function(assert) {
+  var obj = {
+    x: 1,
+    y: 2
+  };
+  assert.equal(txt([obj], {
+    type: "json",
+  }).string, '{\n    &quot;x&quot;: 1,\n    &quot;y&quot;: 2\n}');
+});

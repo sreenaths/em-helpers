@@ -93,7 +93,9 @@ export default Ember.Controller.create({
       try {
         value = JSON.stringify(value, options.replacer, options.space || 4);
       }
-      catch(e){}
+      catch(err){
+        Ember.Logger.error(err);
+      }
     }
     return value;
   }

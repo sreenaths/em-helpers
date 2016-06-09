@@ -23,7 +23,7 @@ export function txt(value, hash) {
       message = 'Not Available!';
     }
     else {
-      return Ember.Handlebars.Utils.escapeExpression(value.toString());
+      return Ember.String.htmlSafe(Ember.Handlebars.Utils.escapeExpression(value.toString()));
     }
   }
   catch(error) {
@@ -31,7 +31,7 @@ export function txt(value, hash) {
     Ember.Logger.error(error);
   }
 
-  return new Ember.Handlebars.SafeString('<span class="txt-message"> ' + message + ' </span>');
+  return Ember.String.htmlSafe('<span class="txt-message"> ' + message + ' </span>');
 }
 
 export default Ember.Helper.helper(txt);
