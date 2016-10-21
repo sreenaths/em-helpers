@@ -1,6 +1,6 @@
 {
   "name": "em-helpers",
-  "version": "0.5.14",
+  "version": "0.5.15",
   "description": "As set of handlebar helpers for Ember.",
   "directories": {
     "doc": "doc",
@@ -50,6 +50,9 @@
   "dependencies": {
     "ember-cli-htmlbars": "^1.0.1",
     "ember-cli-less": "^1.4.0",
+    "source-map": "^0.5.6"
+  },
+  "optionalDependencies": {
     "phantomjs-prebuilt": "2.1.13"
   },
   "ember-addon": {
