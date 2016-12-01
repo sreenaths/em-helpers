@@ -9,20 +9,20 @@ test('txt: created', function(assert) {
 
 test('txt: String', function(assert) {
   assert.equal(txt(["Abc"], {}), "Abc");
-  assert.equal(txt(null, {}), '<span class="txt-message"> Not Available! </span>');
+  assert.equal(txt(null, {}).string, '<span class="txt-message"> Not Available! </span>');
 });
 
 test('txt: String - success', function(assert) {
   assert.equal(txt(["Abc"], {}), "Abc");
-  assert.equal(txt(null, {}), '<span class="txt-message"> Not Available! </span>');
-  assert.equal(txt([null], {}), '<span class="txt-message"> Not Available! </span>');
+  assert.equal(txt(null, {}).string, '<span class="txt-message"> Not Available! </span>');
+  assert.equal(txt([null], {}).string, '<span class="txt-message"> Not Available! </span>');
 });
 
 test('txt: String - error', function(assert) {
   var obj = {};
 
   obj.toString = null;
-  assert.equal(txt([obj], {}), '<span class="txt-message"> Invalid Data! </span>');
+  assert.equal(txt([obj], {}).string, '<span class="txt-message"> Invalid Data! </span>');
 });
 
 test('txt: json', function(assert) {
@@ -33,4 +33,9 @@ test('txt: json', function(assert) {
   assert.equal(txt([obj], {
     type: "json",
   }).string, '{\n    &quot;x&quot;: 1,\n    &quot;y&quot;: 2\n}');
+});
+
+test('txt: error', function(assert) {
+  var err = new Error("testError");
+  assert.equal(txt([err], {}).string, '<span title="testError" class="txt-message"> Error! </span>');
 });
