@@ -44,7 +44,9 @@ test('duration', function(assert) {
   assert.equal(fmts.duration(6666666000, options), "2 months 17 days 3 hours 51 minutes 6 seconds");
   assert.equal(fmts.duration(66666666000, options), "2 years 1 month 11 days 14 hours 31 minutes 6 seconds");
 
-  options = {}; // By default format = short
+  options = {
+    format: "short"
+  }; // By default format = short
   assert.equal(fmts.duration(60, options), "60 msecs");
   assert.equal(fmts.duration(6000, options), "6 secs");
   assert.equal(fmts.duration(66000, options), "1 min 6 secs");
@@ -57,6 +59,17 @@ test('duration', function(assert) {
 
   assert.equal(fmts.duration(60.4, options), "60 msecs");
   assert.equal(fmts.duration(60.6, options), "61 msecs");
+
+  options = {}; // By default format = xshort
+  assert.equal(fmts.duration(60, options), "60ms");
+  assert.equal(fmts.duration(6000, options), "6s");
+  assert.equal(fmts.duration(66000, options), "1m 6s");
+  assert.equal(fmts.duration(666000, options), "11m 6s");
+  assert.equal(fmts.duration(6666000, options), "1h 51m 6s");
+  assert.equal(fmts.duration(66666000, options), "18h 31m 6s");
+  assert.equal(fmts.duration(666666000, options), "7D 17h 11m 6s");
+  assert.equal(fmts.duration(6666666000, options), "2M 17D 3h 51m 6s");
+  assert.equal(fmts.duration(66666666000, options), "2Y 1M 11D 14h 31m 6s");
 });
 
 test('number', function(assert) {
@@ -65,6 +78,7 @@ test('number', function(assert) {
 });
 
 test('memory', function(assert) {
+  assert.equal(fmts.memory(0, {}), "0 B");
   assert.equal(fmts.memory(600, {}), "600 B");
   assert.equal(fmts.memory(1024, {}), "1 KB");
   assert.equal(fmts.memory(1024 * 1024, {}), "1 MB");

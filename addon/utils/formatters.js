@@ -8,27 +8,6 @@ const DEFAULT_DATE_TIMEZONE = "UTC",
       DEFAULT_NUM_FORMAT = '0,0',
       DEFAULT_MEM_FORMAT = '0 b';
 
-const DURATION_FORMATS = {
-  long: {
-    year: "year",
-    month: "month",
-    day: "day",
-    hour: "hour",
-    minute: "minute",
-    second: "second",
-    millisecond: "millisecond"
-  },
-  short: {
-    year: "yr",
-    month: "mo",
-    day: "day",
-    hour: "hr",
-    minute: "min",
-    second: "sec",
-    millisecond: "msec"
-  }
-};
-
 function durationFormatter(arr, value, unit) {
   if(value > 0) {
     if(value > 1) {
@@ -38,6 +17,46 @@ function durationFormatter(arr, value, unit) {
     arr.push(unit);
   }
 }
+
+const DURATION_FORMATS = {
+  long: {
+    collateFunction: durationFormatter,
+
+    year: "year",
+    month: "month",
+    day: "day",
+    hour: "hour",
+    minute: "minute",
+    second: "second",
+    millisecond: "millisecond"
+  },
+  short: {
+    collateFunction: durationFormatter,
+
+    year: "yr",
+    month: "mo",
+    day: "day",
+    hour: "hr",
+    minute: "min",
+    second: "sec",
+    millisecond: "msec"
+  },
+  xshort: {
+    collateFunction: function (arr, value, unit) {
+      if(value > 0) {
+        arr.push(value + unit);
+      }
+    },
+
+    year: "Y",
+    month: "M",
+    day: "D",
+    hour: "h",
+    minute: "m",
+    second: "s",
+    millisecond: "ms"
+  }
+};
 
 function validateNumber(value, message) {
   value = parseFloat(value);
@@ -63,20 +82,25 @@ export default Ember.Controller.create({
     return date;
   },
   duration: function (value, options) {
-    var format = DURATION_FORMATS[options.format || "short"],
+    var format = DURATION_FORMATS[options.format || "xshort"],
         duration,
         ret = [];
 
     value = validateNumber(value, "Invalid duration");
+
+    if(value === 0) {
+      return `0 ${format.millisecond}`;
+    }
+
     duration = moment.duration(value, options.valueUnit);
 
-    durationFormatter(ret, duration.years(), format.year);
-    durationFormatter(ret, duration.months(), format.month);
-    durationFormatter(ret, duration.days(), format.day);
-    durationFormatter(ret, duration.hours(), format.hour);
-    durationFormatter(ret, duration.minutes(), format.minute);
-    durationFormatter(ret, duration.seconds(), format.second);
-    durationFormatter(ret, Math.round(duration.milliseconds()), format.millisecond);
+    format.collateFunction(ret, duration.years(), format.year);
+    format.collateFunction(ret, duration.months(), format.month);
+    format.collateFunction(ret, duration.days(), format.day);
+    format.collateFunction(ret, duration.hours(), format.hour);
+    format.collateFunction(ret, duration.minutes(), format.minute);
+    format.collateFunction(ret, duration.seconds(), format.second);
+    format.collateFunction(ret, Math.round(duration.milliseconds()), format.millisecond);
 
     return ret.join(" ");
   },
@@ -86,6 +110,9 @@ export default Ember.Controller.create({
   },
   memory: function (value) {
     value = validateNumber(value, "Invalid memory");
+    if(value === 0) {
+      return "0 B";
+    }
     return numeral(value).format(DEFAULT_MEM_FORMAT);
   },
   json: function (value, options) {

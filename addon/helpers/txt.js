@@ -21,7 +21,7 @@ export function txt(value, hash) {
         formatter = formatters[dataType];
       }
 
-      if(formatter && value) {
+      if(formatter && value !== undefined && value !== null) {
         value = formatter(value, hash);
       }
 

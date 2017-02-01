@@ -4,6 +4,8 @@
 
 Direct String: {{txt "Test text"}}
 <br/>
+Zero as value: {{txt 0}}
+<br/>
 Variable: {{txt variable}}
 <br/>
 Bounded Variable: {{txt boundedVariable}}
@@ -26,6 +28,8 @@ Value as number variable: {{txt dateNumVariable type="date"}}
 <br/>
 Bounded value: {{txt boundedVariable type="date" format="DD/MM/YY HH:MM:SS"}}
 <br/>
+Zero as value: {{txt 0 type="date"}}
+<br/>
 Invalid value: {{txt "{}" type="date"}}
 
 <h4>3. Duration</h4>
@@ -33,6 +37,8 @@ Invalid value: {{txt "{}" type="date"}}
 Value=3333: {{txt 3333 type="duration"}}
 <br/>
 Value=3333 with valueUnit=seconds: {{txt 3333 type="duration" valueUnit="seconds"}}
+<br/>
+Value=0: {{txt 0 type="duration"}}
 <br/>
 Bounded: {{txt boundedVariable type="duration" valueUnit="seconds"}}
 <br/>
@@ -49,6 +55,8 @@ Number 3: {{txt 10000000 type="number"}}
 <br/>
 Number 4: {{txt 10000000000 type="number"}}
 <br/>
+Zero as value: {{txt 0 type="number"}}
+<br/>
 Bounded Number: {{txt boundedVariable type="number"}}
 <br/>
 Invalid Number: {{txt "{}" type="number"}}
@@ -56,6 +64,8 @@ Invalid Number: {{txt "{}" type="number"}}
 
 <h4>5. Memory</h4>
 
+Zero Bytes: {{txt 0 type="memory"}}
+<br/>
 In Bytes: {{txt 10 type="memory"}}
 <br/>
 In K Bytes: {{txt 10000 type="memory"}}
@@ -76,6 +86,8 @@ Invalid Bytes: {{txt "{}" type="memory"}}
 <h4>6. json</h4>
 
 null: {{txt null type="json"}}
+<br/>
+Zero: {{txt 0 type="json"}}
 <br/>
 undefined: {{txt undefined type="json"}}
 <br/>

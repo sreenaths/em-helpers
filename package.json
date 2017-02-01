@@ -1,6 +1,6 @@
 {
   "name": "em-helpers",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "As set of handlebar helpers for Ember.",
   "directories": {
     "doc": "doc",
