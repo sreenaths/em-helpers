@@ -13,8 +13,7 @@ function durationFormatter(arr, value, unit) {
     if(value > 1) {
       unit += 's';
     }
-    arr.push(value);
-    arr.push(unit);
+    arr.push(value + unit);
   }
 }
 
@@ -22,24 +21,24 @@ const DURATION_FORMATS = {
   long: {
     collateFunction: durationFormatter,
 
-    year: "year",
-    month: "month",
-    day: "day",
-    hour: "hour",
-    minute: "minute",
-    second: "second",
-    millisecond: "millisecond"
+    year: " year",
+    month: " month",
+    day: " day",
+    hour: " hour",
+    minute: " minute",
+    second: " second",
+    millisecond: " millisecond"
   },
   short: {
     collateFunction: durationFormatter,
 
-    year: "yr",
-    month: "mo",
-    day: "day",
-    hour: "hr",
-    minute: "min",
-    second: "sec",
-    millisecond: "msec"
+    year: " yr",
+    month: " mo",
+    day: " day",
+    hour: " hr",
+    minute: " min",
+    second: " sec",
+    millisecond: " msec"
   },
   xshort: {
     collateFunction: function (arr, value, unit) {
@@ -89,7 +88,7 @@ export default Ember.Controller.create({
     value = validateNumber(value, "Invalid duration");
 
     if(value === 0) {
-      return `0 ${format.millisecond}`;
+      return `0${format.millisecond}`;
     }
 
     duration = moment.duration(value, options.valueUnit);

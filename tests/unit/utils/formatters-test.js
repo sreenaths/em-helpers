@@ -33,6 +33,7 @@ test('duration', function(assert) {
   var options = {
     format: "long"
   };
+  assert.equal(fmts.duration(0, options), "0 millisecond");
   assert.equal(fmts.duration(1, options), "1 millisecond");
   assert.equal(fmts.duration(60, options), "60 milliseconds");
   assert.equal(fmts.duration(6000, options), "6 seconds");
@@ -47,6 +48,7 @@ test('duration', function(assert) {
   options = {
     format: "short"
   }; // By default format = short
+  assert.equal(fmts.duration(0, options), "0 msec");
   assert.equal(fmts.duration(60, options), "60 msecs");
   assert.equal(fmts.duration(6000, options), "6 secs");
   assert.equal(fmts.duration(66000, options), "1 min 6 secs");
@@ -61,6 +63,7 @@ test('duration', function(assert) {
   assert.equal(fmts.duration(60.6, options), "61 msecs");
 
   options = {}; // By default format = xshort
+  assert.equal(fmts.duration(0, options), "0ms");
   assert.equal(fmts.duration(60, options), "60ms");
   assert.equal(fmts.duration(6000, options), "6s");
   assert.equal(fmts.duration(66000, options), "1m 6s");
