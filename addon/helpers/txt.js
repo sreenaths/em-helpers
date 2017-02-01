@@ -12,7 +12,7 @@ export function txt(value, hash) {
   }
 
   if(value instanceof Error) {
-    message = "Error!";
+    message = value.message;
     titleAttr = `title="${value.message}" `;
   }
   else {

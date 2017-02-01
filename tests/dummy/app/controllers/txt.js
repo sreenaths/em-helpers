@@ -4,6 +4,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  //Error
+  errorObj: new Error("Error object message!"),
+
   // Data
   variable: "Text as variable",
   boundedVariable: 0,

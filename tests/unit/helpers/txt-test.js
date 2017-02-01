@@ -37,5 +37,5 @@ test('txt: json', function(assert) {
 
 test('txt: error', function(assert) {
   var err = new Error("testError");
-  assert.equal(txt([err], {}).string, '<span title="testError" class="txt-message"> Error! </span>');
+  assert.equal(txt([err], {}).string, '<span title="testError" class="txt-message"> testError </span>');
 });
